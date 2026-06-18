@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 test('Main Demo Landing Page', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1200 })
 
-  await page.goto('https://www.sprinto.com/lp/demo-testing/', {
+  await page.goto('https://www.sprinto.com/lp/demo-testing/?vtest', {
     waitUntil: 'domcontentloaded',
     timeout: 60000,
   })
