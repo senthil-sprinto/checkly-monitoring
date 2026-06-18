@@ -1,7 +1,7 @@
 import { test } from '@playwright/test'
 
 test('Generate baseline', async ({ page }) => {
-  await page.goto('https://www.sprinto.com/lp/demo-testing/', {
+  await page.goto('https://www.sprinto.com/lp/demo-testing/?v3', {
     waitUntil: 'domcontentloaded',
     timeout: 60000,
   })
