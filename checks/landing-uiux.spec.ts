@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test'
 
-test('Check page content', async ({ page }) => {
+test('Main Demo Landing Page', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1200 })
+
   await page.goto('https://www.sprinto.com/lp/demo-testing/', {
     waitUntil: 'domcontentloaded',
     timeout: 60000,
@@ -8,14 +10,12 @@ test('Check page content', async ({ page }) => {
 
   await page.waitForTimeout(5000)
 
-  const bodyText = await page.locator('body').innerText()
+  await expect(page.locator('body')).not.toContainText('Verify you are human')
+  await expect(page.locator('body')).not.toContainText('Performing security verification')
 
-  console.log(bodyText)
-
-  await page.screenshot({
-    path: 'debug.png',
+  await expect(page).toHaveScreenshot('main-demo-landing-page.png', {
     fullPage: true,
+    maxDiffPixelRatio: 0.01,
+    timeout: 60000,
   })
-
-  expect(true).toBe(true)
 })
